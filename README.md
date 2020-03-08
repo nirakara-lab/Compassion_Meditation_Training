@@ -1,4 +1,5 @@
 # CCT_network_analysis
+[![DOI](https://zenodo.org/badge/245776569.svg)](https://zenodo.org/badge/latestdoi/245776569)
 
 
 ## The Impact of Compassion Meditation Training on Well-being and Related Variables: A Network Perspective
@@ -12,7 +13,7 @@ We computed networks comprising associations among well-being and other psycholo
 Between April and December 2017, 198 participants enrolled in a standardized 8-week CCT at a university-associated research center specializing in Mindfulness and Compassion-Based Interventions. Inclusion criteria for the CCT were as follows: 1) 18 years of age or more, and 2) not having any current serious psychological disorder or substance use.
 Statistical analyses were conducted only for data from participants who completed pre-assessment and attended a minimum of 6 sessions (i.e., 75% of the program).
 
-After applying all exclusion criteria, data from a total of 96 individuals were included in all analyses. Participants mean age was 47.78 (SD=9.80), 75% women, 93.7 % had higher education, 42.7% married, 79.2% employed, 11.5% with physical illness, 85.4% with previous meditation experience, being the meditation years average was 4.81 (SD=5.58). 
+After applying all exclusion criteria, data from a total of 96 individuals were included in all analyses. Participants mean age was 47.78 (SD=9.80), 75% women, 93.7 % had higher education, 42.7% married, 79.2% employed, 11.5% with physical illness, 85.4% with previous meditation experience, being the meditation years average was 4.81 (SD=5.58).
 
 ## Constructs and instruments of study
 ### Mindfulness
