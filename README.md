@@ -1,8 +1,5 @@
-# CCT_network_analysis
+# The Impact of Compassion Meditation Training on Well-being and Related Variables: A Network Perspective
 [![DOI](https://zenodo.org/badge/245776569.svg)](https://zenodo.org/badge/latestdoi/245776569)
-
-
-## The Impact of Compassion Meditation Training on Well-being and Related Variables: A Network Perspective
 
 
 We computed networks comprising associations among well-being and other psychological variables before and after a Compassion Cultivation Training (CCT). Associations between self-compassion and adaptative emotional and cognitive regulation variables became stronger following CCT. The strength and expected influence centrality values (i.e., importance and influence in the network) increased for self-compassion measures, whereas the values declined for depression, anxiety, brooding, non-judgment and non-reactivity. After CCT, self-compassion, non-attachment, decentering, and emotional reappraisal were the most important nodes connecting the different subnetworks (i.e., highest bridge centrality values). Compassion, mindfulness, and well-being were the most predictable nodes (i.e., variance explained) by other nodes in the network, whereas psychopathology-related constructs diminished in their predictability after the program. Community analysis detected five clusters of nodes (i.e., psychopathology, self-compassion, mindfulness, well-being and compassion) prior to CCT and these remained largely unchanged after CCT. These results clarify the mechanisms through which compassion meditation may produce its effects.
