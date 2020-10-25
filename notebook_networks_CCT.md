@@ -6,7 +6,7 @@ packages
 Creating the dataset to work in R. We include only the columns of the
 variables with which we want to make a network.
 
-los colores elegidos para los nodos es (“\#eee361”, “\#6fb3e4”,
+The colors chosen for the nodes are (“\#eee361”, “\#6fb3e4”,
 “\#469b77”, “\#d16d6f”, “\#bbb2d4”)
 
 Spearman with bonferroni correction
@@ -358,7 +358,7 @@ centRes_pre_bin <- centrality(network_pre_bin)
 ``` r
 centRes_pre <- centrality(network_pre_GGM)
 #write.csv(centRes_pre, file = "centRes_pre_outdegree.csv")
-#extraigo el grafo y lo transormo en binario
+#extracting the network and transform it into binary
 
 # Node strength (degree):
 centRes_pre$OutDegree # Or InDegree, it's the same in unweighted networks
@@ -449,7 +449,7 @@ centralityPlot(GGM = list(Spearman = g_pre_cor, regularized = network_pre_GGM), 
 Node strength for post
 ----------------------
 
-Para calcular el degree, tengo que convertir mi grafo en binario:
+To calculate the degree, I have to convert my network into binary:
 
 ``` r
 network_post_bin <- as.matrix((network_post_adjacencyMatrix > 0) + 0)
@@ -587,29 +587,29 @@ network_pre_igraph <- as.igraph(network_pre_qgraph)
 network_post_igraph <- as.igraph(network_post_qgraph)
 ```
 
-Calculo del clustering coeficient:
+Calculation of the coeficient clustering:
 ----------------------------------
 
-*Coeficiente de agrupamiento global*
+*Overall grouping coefficient*
 
-El coeficiente de agrupamiento global se basa en tripletes de nodos. Un
-triplete consta de tres nodos conectados. Por lo tanto, un triángulo
-incluye tres tripletes cerrados, uno centrado en cada uno de los nodos
-(nb esto significa que los tres tripletes en un triángulo provienen de
-selecciones de nodos superpuestas). El coeficiente de agrupamiento
-global es el número de tripletes cerrados (o 3 x triángulos) sobre el
-número total de tripletes (tanto abiertos como cerrados). El primer
-intento de medirlo fue realizado por Luce y Perry (1949). Esta medida
-proporciona una indicación del agrupamiento en toda la red (global) y se
-puede aplicar tanto a redes no dirigidas como a redes dirigidas.
+The overall grouping coefficient is based on triplets of nodes. A
+Triplet consists of three connected nodes. Therefore, a triangle
+includes three closed triplets, one centered on each of the nodes
+(nb this means that the three triplets in a triangle come from
+overlapping node selections). The grouping coefficient
+global is the number of closed triplets (or 3 x triangles) on the
+total number of triplets (both open and closed). The first
+attempt to measure it was made by Luce and Perry (1949). This measurement
+provides an indication of the clustering across the (global) network and
+can apply to both untargeted and targeted networks.
 
-*Coeficiente de agrupamiento local* Dado un vecindario de un nodo,
-definido como el conjunto de conexiones inmediatas con otros nodos, se
-computa el coeficiente de agrupación local como el número de conexiones
-entre los nodos posibles dividido por el número de conexiones posibles,
-la siguiente figura captura el concepto: ![](clustering_concept.png)
+*Local Clustering Coefficient* Given a neighborhood of a node,
+defined as the set of immediate connections with other nodes, it
+computes the local grouping coefficient as the number of connections
+between the possible nodes divided by the number of possible connections,
+the following figure captures the concept: ![](clustering_concept.png)
 
-Computando los coeficientes de clustering locales
+Computing local clustering coefficients
 
 ``` r
 clustering_pre <- transitivity(network_pre_igraph, type = "local")
@@ -726,23 +726,23 @@ dev.off();
     ## quartz_off_screen 
     ##                 2
 
-Sobre la Expected influence:
+About Expected influence:
 ----------------------------
 
-Cuando una red contiene edges positivos y negativos, las medidas
-tradicionales de centralidad, como la centralidad de la fuerza, pueden
-no predecir con precisión la influencia de los nodos en la red.
-Robinaugh, Millner y McNally (2016) mostraron que en estos casos, la
-influencia esperada es una medida más apropiada. La influencia esperada
-de un paso se define como la suma de todos los edges que se extienden
-desde un nodo dado (donde se mantiene el signo de cada edge). La
-influencia esperada de dos pasos, como su nombre indica, mide la
-conectividad hasta dos edges del nodo. Se define como la suma de las
-influencias esperadas (ponderadas) de cada nodo conectado al nodo
-inicial más la influencia esperada de un paso del nodo inicial. Los
-pesos se determinan por la resistencia de los bordes entre el nodo
-inicial y cada nodo de “segundo paso”.
-[Fuente](https://rdrr.io/cran/networktools/src/R/expectedInf.R)
+When a network contains both positive and negative edges, the
+traditional centrality, such as the centrality of force, can
+not accurately predicting the influence of nodes on the network.
+Robinaugh, Millner and McNally (2016) showed that in these cases, the
+expected influence is a more appropriate measure. The expected influence
+of a step is defined as the sum of all the edges that extend
+from a given node (where the sign of each edge is maintained). The
+expected two-step influence, as its name suggests, measures the
+connectivity up to two edges of the node. It is defined as the sum of the
+expected (weighted) influences from each node connected to the node
+plus the expected influence of a step from the initial node. The
+weights are determined by the strength of the edges between the
+and each "second step" node.
+[Source](https://rdrr.io/cran/networktools/src/R/expectedInf.R)
 
 Edge-weight accuracy
 ====================
@@ -1135,14 +1135,14 @@ network_post_GGM_plot<-plot(network_post_GGM, layout="spring",
 Computing Predictability
 ========================
 
-nos gustaría saber: ¿Cómo de preciso puede ser la predicción de un nodo
-determinado sabiendo todos los demás? La previsibilidad es interesante
-por varias razones: 1. Aunque un nodo tenga varios edges pero sólo se
-puede predecir un 1% de su varianza, entonces, podríamos llegar a la
-conclusión de que no podemos asegurar que influyendo en los nodos a los
-que está conectado se puede tener buenos resultados. 2. Nos dice hasta
-qué punto las diferentes partes de la red son autodeterminadas o
-determinadas por otros factores que no están incluidos en la red.
+we would like to know: How accurate can the prediction of a node be
+determined by knowing everyone else? Predictability is interesting
+Even if a node has several edges, but only one
+can predict 1% of its variance, then, we could reach the
+conclusion that we can't assure that by influencing the nodes to
+that is connected can have good results. 2. It tells us up to
+at which point the different parts of the network are self-determined or
+determined by other factors not included in the network.
 
 ``` r
 set.seed(666)
