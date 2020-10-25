@@ -63,7 +63,8 @@ network_post_GGM_plot<-plot(network_post_GGM, layout="circle", vsize=8, cut=0,
 network_pre_GGM_plot<-plot(network_pre_GGM, layout="circular", vsize=8, cut=0, 
                            border.width=1.5, border.color="black", 
                            nodeNames = longnames,legend=T, groups=group_scales, 
-                           tuning = 0.25,aspect=T, title = "PRE GGM", colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"))
+                           tuning = 0.25,aspect=T, title = "PRE GGM", 
+                           colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"))
 ```
 
     ## Warning in qgraph::qgraph(wMat, labels = labels, directed = directed,
@@ -74,7 +75,8 @@ network_pre_GGM_plot<-plot(network_pre_GGM, layout="circular", vsize=8, cut=0,
 network_post_GGM_plot<-plot(network_post_GGM, layout="circular", vsize=8, cut=0, 
                             border.width=1.5, border.color="black", 
                             nodeNames = longnames,legend=T,groups=group_scales,
-                            tuning = 0.25, aspect=T, title = "POST GGM", colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"))
+                            tuning = 0.25, aspect=T, title = "POST GGM", 
+                            colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"))
 ```
 
     ## Warning in qgraph::qgraph(wMat, labels = labels, directed = directed,
@@ -100,7 +102,12 @@ dev.off();
 
 ``` r
 par(mfrow=c(1,2))
-network_pre_glasso <- qgraph(pre_cor_matrix_spearman, sampleSize = nrow(network_pre),graph="glasso",nodeNames = longnames,legend=T,groups=group_scales,layout = "spring", vsize = 8, colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"),legend.mode = "groups", GLratio = 1.7, title = "PRE cct", title.cex = 2)
+network_pre_glasso <- qgraph(pre_cor_matrix_spearman, sampleSize = nrow(network_pre),graph="glasso",
+nodeNames = longnames,legend=T,groups=group_scales,
+layout = "spring", vsize = 8, 
+colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"),
+legend.mode = "groups", 
+GLratio = 1.7, title = "PRE cct", title.cex = 2)
 ```
 
     ## Warning in qgraph(pre_cor_matrix_spearman, sampleSize =
@@ -108,7 +115,12 @@ network_pre_glasso <- qgraph(pre_cor_matrix_spearman, sampleSize = nrow(network_
     ## not arguments of qgraph and thus ignored: colors
 
 ``` r
-network_post_glasso <- qgraph(post_cor_matrix_spearman, sampleSize = nrow(network_post),graph="glasso",nodeNames = longnames,legend=T,groups=group_scales,layout = "spring", vsize = 8, colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"), legend.mode = "groups", GLratio = 1.7, title = "POST cct", title.cex = 2)
+network_post_glasso <- qgraph(post_cor_matrix_spearman, sampleSize = nrow(network_post),
+graph="glasso",nodeNames = longnames,legend=T,
+groups=group_scales,layout = "spring", vsize = 8, 
+colors = c("#eee361", "#6fb3e4", "#469b77", "#d16d6f", "#bbb2d4"), 
+legend.mode = "groups", GLratio = 1.7, 
+title = "POST cct", title.cex = 2)
 ```
 
     ## Warning in qgraph(post_cor_matrix_spearman, sampleSize =
@@ -439,7 +451,10 @@ centralityPlot(network_pre_GGM, include = c("ExpectedInfluence","Strength", "Clo
 comparing the regularization:
 
 ``` r
-centralityPlot(GGM = list(Spearman = g_pre_cor, regularized = network_pre_GGM), include = c("ExpectedInfluence","Strength", "Closeness", "Betweenness"))
+centralityPlot(GGM = list(Spearman = g_pre_cor, 
+    regularized = network_pre_GGM), 
+    include = c("ExpectedInfluence","Strength", 
+    "Closeness", "Betweenness"))
 ```
 
     ## Warning: Removed 1 rows containing missing values (geom_point).
@@ -662,7 +677,9 @@ df_centrality$index <- (1:25)
 
 ``` r
 #vamos a reshape:
-df_centrality_long<- reshape(data=df_centrality, idvar="Item", varying = c("centRes_pre.InExpectedInfluence", "centRes_pre.InDegree",
+df_centrality_long<- reshape(data=df_centrality, idvar="Item", 
+                    varying = c("centRes_pre.InExpectedInfluence", 
+                                    "centRes_pre.InDegree",
                                      "centRes_pre_bin.InDegree",
                                      "clustering_pre",
                                      "efficiency_pre",
@@ -670,7 +687,8 @@ df_centrality_long<- reshape(data=df_centrality, idvar="Item", varying = c("cent
                                      "centRes_post.InDegree",
                                      "centRes_post_bin.InDegree",
                                      "clustering_post",
-                                     "efficiency_post"), times = c("centRes_pre.InExpectedInfluence", "centRes_pre.InDegree",
+                                     "efficiency_post"), 
+                                     times = c("centRes_pre.InExpectedInfluence", "centRes_pre.InDegree",
                                      "centRes_pre_bin.InDegree",
                                      "clustering_pre",
                                      "efficiency_pre",
@@ -683,8 +701,13 @@ df_centrality_long<- reshape(data=df_centrality, idvar="Item", varying = c("cent
                          new.row.names = 1:10000,
                          direction="long")
 df_centrality_long$state <- rep(c("PRE", "POST"), 1, each=125)
-df_centrality_long$central_parameter <- rep(c("ExpectedInfluence", "Strength", "Degree", "Clustering", "Efficiency"), 2, each=25)
-df_centrality_long$central_parameter_f <- factor (df_centrality_long$central_parameter, levels = c("ExpectedInfluence", "Strength", "Degree", "Clustering", "Efficiency"))
+df_centrality_long$central_parameter <- rep(c("ExpectedInfluence", 
+            "Strength", "Degree", 
+            "Clustering", "Efficiency"), 2, each=25)
+df_centrality_long$central_parameter_f <- factor (df_centrality_long$central_parameter, 
+    levels = c("ExpectedInfluence", 
+    "Strength", "Degree", 
+    f"Clustering", "Efficiency"))
 df_centrality_long$index_state <- rep(c(1:125), 2)
 df_centrality_long$state <- as.factor(df_centrality_long$state)
 df_centrality_long$central_parameter <- as.factor(df_centrality_long$central_parameter)
@@ -932,7 +955,9 @@ PRE cct network
 ---------------
 
 ``` r
-pre_boot2<-bootnet(network_pre_GGM, default="EBICglasso", statistics = c("strength","closeness","betweenness"), nBoots = 1000,type="case",nCores = 8)
+pre_boot2<-bootnet(network_pre_GGM, default="EBICglasso", 
+statistics = c("strength","closeness","betweenness"), 
+nBoots = 1000,type="case",nCores = 8)
 ```
 
     ## Note: bootnet will store only the following statistics:  strength, closeness, betweenness
@@ -1007,7 +1032,9 @@ Post cct network
 ----------------
 
 ``` r
-post_boot2<-bootnet(network_post_GGM,statistics = c("strength","closeness","betweenness"), nBoots = 500,type="case",nCores = 8)
+post_boot2<-bootnet(network_post_GGM,
+    statistics = c("strength","closeness","betweenness"), 
+    nBoots = 500,type="case",nCores = 8)
 ```
 
     ## Note: bootnet will store only the following statistics:  strength, closeness, betweenness
