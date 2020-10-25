@@ -753,7 +753,7 @@ About Expected influence:
 ----------------------------
 
 When a network contains both positive and negative edges, the
-traditional centrality, such as the centrality of force, can
+traditional centrality, such as the centrality of strength, can
 not accurately predicting the influence of nodes on the network.
 Robinaugh, Millner and McNally (2016) showed that in these cases, the
 expected influence is a more appropriate measure. The expected influence
